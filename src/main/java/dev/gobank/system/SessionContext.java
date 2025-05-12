@@ -14,6 +14,25 @@ public class SessionContext {
         this.identifier = identifier;
     }
 
+    public boolean isLoggedIn() {
+        return account != null;
+    }
+
+    public boolean isLoggedOut() {
+        return account == null;
+    }
+
+    public boolean cleanup() {
+        this.account = null;
+        this.identifier = null;
+        return true;
+    }
+
+    public boolean exitSession() {
+        if (account == null && identifier == null) {return false;}
+        return cleanup();
+    }
+
     public Account getAccount() {
         return account;
     }

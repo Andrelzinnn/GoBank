@@ -21,6 +21,11 @@ public class AuthManager {
         return auth != null && auth.getPassword().equals(password);
     }
 
+    public boolean removeAuth(Identifier identifier) {
+        String token = identifier.getKey();
+        return authStorage.remove(token) != null;
+    }
+
     public Auth getAuthByIdentifier(Identifier identifier) {
         String token = identifier.getKey();
         return authStorage.get(token);

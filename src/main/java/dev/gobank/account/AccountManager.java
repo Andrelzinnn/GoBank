@@ -26,6 +26,7 @@ public class AccountManager {
         return true;
     }
 
+
     public Account getAccountByIdentifier(Identifier identifier) {
         String token = identifier.getKey();
         return accounts.get(token);

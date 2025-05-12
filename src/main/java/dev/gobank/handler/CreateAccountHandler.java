@@ -40,7 +40,7 @@ public class CreateAccountHandler implements StatelessHandler {
         passwd = scanner.nextLine();
 
         this.person = new Person(firstName, lastName, age, gender, cpf, phone, email, address);
-        this.identifier = new Identifier(firstName, lastName, cpf);
+        this.identifier = new Identifier(cpf);
 
         accountManager.addAccount(person, identifier);
         authManager.register(identifier, passwd);

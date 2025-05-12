@@ -20,14 +20,10 @@ public class LoginHandler implements Handler {
 
     @Override
     public boolean handle(SessionContext context) {
-        System.out.print("Enter your first name: ");
-        String firstName = scanner.nextLine();
-        System.out.print("Enter your last name: ");
-        String lastName = scanner.nextLine();
-        System.out.print("Enter your cpf: ");
+        System.out.print("Enter your CPF: ");
         String cpf = scanner.nextLine();
 
-        Identifier identifier = new Identifier(firstName, lastName, cpf);
+        Identifier identifier = new Identifier(cpf);
         Account account = accountManager.getAccountByIdentifier(identifier);
 
         if (account == null) {
@@ -35,7 +31,8 @@ public class LoginHandler implements Handler {
             return false;
         }
 
-        System.out.println(account);
+        String name = account.getOwner().getFirstName();
+        System.out.printf("Welcome %s\n", name);
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
 
